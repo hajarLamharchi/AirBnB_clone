@@ -4,7 +4,6 @@ import uuid
 import datetime
 
 
-
 class BaseModel:
     """This class defines all common attributes/methods for other classes:
        Attributes:
@@ -12,11 +11,26 @@ class BaseModel:
           created_at: datetime
           updated_at: datetime
     """
-    def __init__(self):
-        """initializes attrinutes of the class"""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+    def __init__(self, *args, **kwargs):
+        """initializes attrinutes of the class
+            Attributes:
+                args: arguments
+                kwargs: arguments for the constructor of a BaseModel
+        """
+        print('kwargs -------------------------------------')
+        if kwargs is not None and len(kwargs) != 0:
+            print("not empty")
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    if key == 'created_at' or key == 'updated_at':
+                        date = datetime.datetime.fromisoformat(value)
+                        self.__dict__[key] = date
+                    else:
+                        self.__dict__[key] = value
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def __str__(self):
         """Returns a string representation of the instance"""
@@ -34,4 +48,3 @@ class BaseModel:
         string['created_at'] = self.created_at.isoformat()
         string['updated_at'] = self.updated_at.isoformat()
         return string
-        
