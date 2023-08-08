@@ -5,10 +5,12 @@ import json
 
 
 class FileStorage:
-    """Serializes instances to a JSON file and deserializes Json file to istances
-       Attribute:
-       __file_path(string): path to JSON file
-       __objects(dictionary): store objects by <class name>.id
+    """
+        Serializes instances to a JSON file and deserializes Json file to
+        istances
+        Attribute:
+        __file_path(string): path to JSON file
+        __objects(dictionary): store objects by <class name>.id
     """
     __file_path = "file.json"
     __objects = {}
@@ -24,8 +26,9 @@ class FileStorage:
 
     def save(self):
         """Serializes __objects to the JSON file __file_path"""
+        dic = FileStorage.__objects
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
-            json.dump(FileStorage.__objects, f)
+            json.dump({obj: dic[obj].to_dict() for obj in dic.keys()}, f)
 
     def reload(self):
         """deserializess the JSON file to __ojects"""
@@ -34,7 +37,6 @@ class FileStorage:
                 dict_format = json.load(f)
                 for obj in dict_format.values():
                     cls_name = obj["__class__"]
-                    cls_obj = cls_name.__new__(cls_name)
-                    self.new(cls_obj(**obj))
-        except FileNotFoundErroe:
+                    self.new(eval(cls_name)(**obj))
+        except FileNotFoundError:
             pass
