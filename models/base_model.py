@@ -2,6 +2,7 @@
 """This module defines the class BaseModel"""
 import uuid
 import datetime
+from models import storage
 
 
 class BaseModel:
@@ -17,9 +18,7 @@ class BaseModel:
                 args: arguments
                 kwargs: arguments for the constructor of a BaseModel
         """
-        print('kwargs -------------------------------------')
         if kwargs is not None and len(kwargs) != 0:
-            print("not empty")
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key == 'created_at' or key == 'updated_at':
@@ -31,6 +30,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """Returns a string representation of the instance"""
@@ -41,6 +41,7 @@ class BaseModel:
     def save(self):
         """Updates the attribute updated_at with the current datetime"""
         self.updated_at = datetime.datetime.now()
+        storage.save(self)
 
     def to_dict(self):
         string = self.__dict__.copy()
