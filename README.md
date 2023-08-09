@@ -8,13 +8,3 @@ guillaume@ubuntu:~/AirBnB$ ./console.py
 
 * The console is used like this:
 (hbnb) command argument
-
-* Example:
-(hbnb) help
-
-Documented commands (type help <topic>):
-========================================
-EOF  help  quit
-
-
-(hbnb)
