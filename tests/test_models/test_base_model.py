@@ -54,6 +54,7 @@ class testBaseModel(unittest.TestCase):
         bm.save()
         self.assertNotEqual(bm.created_at, bm.updated_at)
 
+
 class TestBaseModelDict(unittest.TestCase):
     """Defines Tests cases for for the dict representation"""
     def test_base_to_dict(self):
