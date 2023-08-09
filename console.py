@@ -6,6 +6,11 @@ import cmd
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -15,7 +20,13 @@ class HBNBCommand(cmd.Cmd):
             prompt(string): cmd prompt
     """
     prompt = "(hbnb) "
-    __classes = ['BaseModel', 'User']
+    __classes = ['BaseModel',
+            'User',
+            'State',
+            'City',
+            'Amenity',
+            'Place',
+            'Review']
 
     def do_EOF(self, line):
         'Quit command to exit the program\n'
@@ -107,8 +118,8 @@ class HBNBCommand(cmd.Cmd):
             print(obj_list)
 
     def do_update(self, args):
-        'Updates an instance based on the class name and id by
-        adding or updating'
+        """Updates an instance based on the class name and id by
+        adding or updating"""
         arg_list = args.split()
         if len(arg_list) == 0:
             print("** class name missing **")
