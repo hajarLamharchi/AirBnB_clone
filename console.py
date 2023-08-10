@@ -11,6 +11,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -101,15 +102,18 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         'Prints all strings representation of all instances'
         if line:
-            if line in HBNBCommand.__classes:
-                obj = storage.all()
-                obj_list = []
-                for k, v in obj.items():
-                    if k.split('.')[0] == line:
-                        obj_list.append(str(v))
-                print(obj_list)
+            pattern = r'^([A-Za-z][A-Za-z0-9_]*)\.all\(\)$'
+            match = re.match(pattern, line)
+            if match:
+                cls_name = match.group(1)
+                if cls_name in HBNBCommand.__classes:
+                    obj = HBNBCommand.__classes[cls_name].all()
+                    obj_list = [str(ob) for ob in obj]
+                    print(obj_list)
+                else:
+                    print("** class doesn't exist **")
             else:
-                print("** class doesn't exist **")
+                print(f"** Invalid syntax: {line} **")
         else:
             obj = storage.all()
             obj_list = []

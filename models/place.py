@@ -19,7 +19,7 @@ class Place(BaseModel):
             longitude(float): place coordinate
             amenity_ids(list of string): list of amenity ids
     """
-    amenity_ids = ""
+    city_id = ""
     user_id = ""
     name = ""
     description = ""
