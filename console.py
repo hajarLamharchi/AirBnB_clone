@@ -29,6 +29,20 @@ class HBNBCommand(cmd.Cmd):
             'Place',
             'Review']
 
+    def precmd(self, line):
+        """Called just before a command is executed to modify the line"""
+        pattern = r'^([A-Za-z][A-Za-z0-9_]*)\.all\(\)$'
+        match = re.match(pattern, line)
+        if match:
+            cls_name = match.group(1)
+            if cls_name in HBNBCommand.__classes:
+                return f"all {cls_name}"
+            else:
+                print("** class doesn't exist **")
+                return ""
+        else:
+            return line
+
     def do_EOF(self, line):
         'Quit command to exit the program\n'
         print("")
@@ -102,18 +116,14 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         'Prints all strings representation of all instances'
         if line:
-            pattern = r'^([A-Za-z][A-Za-z0-9_]*)\.all\(\)$'
-            match = re.match(pattern, line)
-            if match:
-                cls_name = match.group(1)
-                if cls_name in HBNBCommand.__classes:
-                    obj = HBNBCommand.__classes[cls_name].all()
-                    obj_list = [str(ob) for ob in obj]
-                    print(obj_list)
-                else:
-                    print("** class doesn't exist **")
+            arg = line.split()
+            if len(arg) == 2 and arg[0] == "all" and arg[1] in HBNBCommand.__classes:
+                cls = eval(arg[1])
+                obj = cls.all()
+                obj_list = [str(ob) for ob in obj]
+                print(obj_list)
             else:
-                print(f"** Invalid syntax: {line} **")
+                print("** invalid syntax **")
         else:
             obj = storage.all()
             obj_list = []
