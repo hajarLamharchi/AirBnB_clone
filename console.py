@@ -116,11 +116,17 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         'Prints all strings representation of all instances'
         if line:
-            arg = line.split()
-            if len(arg) == 2 and arg[0] == "all" and arg[1] in HBNBCommand.__classes:
-                cls = eval(arg[1])
+            #arg = line.split()
+            if line in HBNBCommand.__classes:
+                """cls = eval(line)
                 obj = cls.all()
                 obj_list = [str(ob) for ob in obj]
+                """
+                obj = storage.all()
+                obj_list = []
+                for k, v in obj.items():
+                    if k.split('.')[0] == line:
+                        obj_list.append(str(v))
                 print(obj_list)
             else:
                 print("** invalid syntax **")
