@@ -21,22 +21,27 @@ class HBNBCommand(cmd.Cmd):
             prompt(string): cmd prompt
     """
     prompt = "(hbnb) "
-    __classes = ['BaseModel',
-            'User',
-            'State',
-            'City',
-            'Amenity',
-            'Place',
-            'Review']
+    __classes = [
+                'BaseModel',
+                'User',
+                'State',
+                'City',
+                'Amenity',
+                'Place',
+                'Review']
 
     def precmd(self, line):
         """Called just before a command is executed to modify the line"""
-        pattern = r'^([A-Za-z][A-Za-z0-9_]*)\.all\(\)$'
+        pattern = (
+                r'^([A-Za-z][A-Za-z0-9_]*)\.'
+                r'(all|count|destroy|update|show)\((.*)\)$')
         match = re.match(pattern, line)
         if match:
             cls_name = match.group(1)
+            cmd = match.group(2)
+            arg = match.group(3).replace('"', "").replace(',', "")
             if cls_name in HBNBCommand.__classes:
-                return f"all {cls_name}"
+                return f"{cmd} {cls_name} {arg}"
             else:
                 print("** class doesn't exist **")
                 return ""
@@ -116,12 +121,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         'Prints all strings representation of all instances'
         if line:
-            #arg = line.split()
             if line in HBNBCommand.__classes:
-                """cls = eval(line)
-                obj = cls.all()
-                obj_list = [str(ob) for ob in obj]
-                """
                 obj = storage.all()
                 obj_list = []
                 for k, v in obj.items():
@@ -168,6 +168,16 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
         else:
             print("** no instance found **")
+
+    def do_count(self, line):
+        'the number of instances of a class'
+        if line:
+            obj = storage.all()
+            nb = 0
+            for k, v in obj.items():
+                if k.split('.')[0] == line:
+                    nb += 1
+            print(nb)
 
 
 if __name__ == '__main__':
