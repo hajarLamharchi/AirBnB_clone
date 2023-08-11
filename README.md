@@ -12,18 +12,23 @@ To start the console, simply run the `console.py` file in your terminal:
 
 ```bash
 ubuntu@ubuntu:~/AirBnB$ ./console.py
+```
 
 Once launched, the console prompt will appear as follows:
 
 ```bash
 (hbnb)
+```
 
 ## Usage
+To Use The console you should enter the class name followed by the command name as follow:
 
 ```bash
 (hbnb) <class name>.command()
+```
 
 * Example:
 
 ```bash
 (hbnb) User.count()
+```
