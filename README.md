@@ -24,7 +24,7 @@ Once launched, the console prompt will appear as follows:
 To Use The console you should enter the class name followed by the command name as follow:
 
 ```bash
-(hbnb) <class name>.command()
+(hbnb) <classname>.command()
 ```
 
 * Example:
