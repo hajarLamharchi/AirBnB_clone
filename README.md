@@ -1,14 +1,29 @@
-# AirBnB_clone
-AirBnB The Console is the first step in creating the AirBnB clone web application, it's like a sandbox that allows you to create, modify and delete objects in your file storage.
-##
-The console is an important tool to test what does and doesn't work in storage before building the rest of the application
-##
-* To start the console, run the file console.py
-##
-guillaume@ubuntu:~/AirBnB$ ./console.py
-##
+# AirBnB Clone Console
+
+The AirBnB Console is the first step in creating the AirBnB clone web application, it's like a sandbox that allows you to create, modify and delete objects in your file storage.
+
+## Purpose of the Console
+
+The console is an important tool to test what does and doesn't work in storage before building the rest of the application.
+
+## Getting Started
+
+To start the console, simply run the `console.py` file in your terminal:
+
+```bash
+ubuntu@ubuntu:~/AirBnB$ ./console.py
+
+Once launched, the console prompt will appear as follows:
+
+```bash
 (hbnb)
-##
-* Usage:
-##
-(hbnb) command argument
+
+## Usage
+
+```bash
+(hbnb) <class name>.command()
+
+* Example:
+
+```bash
+(hbnb) User.count()
