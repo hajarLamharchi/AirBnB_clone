@@ -39,7 +39,9 @@ class HBNBCommand(cmd.Cmd):
         if match:
             cls_name = match.group(1)
             cmd = match.group(2)
-            arg = match.group(3).replace('"', "").replace(',', "")
+            arg = match.group(3)
+            char = {"'", "{", "\"", ",", ":", "}"}
+            arg = arg.translate({ord(i): None for i in char})
             if cls_name in HBNBCommand.__classes:
                 return f"{cmd} {cls_name} {arg}"
             else:
@@ -158,13 +160,14 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
         id = arg_list[1]
-        new_attr = arg_list[2]
-        val = arg_list[3]
         obj = storage.all()
         key = f"{cls_name}.{id}"
         if key in obj:
             obj2 = obj[key]
-            obj2.__dict__[new_attr] = val
+            for i in range(2, len(arg_list), 2):
+                new_attr = arg_list[i]
+                val = arg_list[i + 1]
+                obj2.__dict__[new_attr] = val
             storage.save()
         else:
             print("** no instance found **")
