@@ -43,7 +43,8 @@ class testBaseModel(unittest.TestCase):
         self.assertIsInstance(bm.updated_at, datetime.datetime)
 
     def test_base_created_at_greater(self):
-        """checks if created_at of an object created after another is greater"""
+        """checks if created_at of an object created
+        after another is greater"""
         bm1 = BaseModel()
         bm2 = BaseModel()
         self.assertGreater(bm2.created_at, bm1.created_at)
