@@ -23,6 +23,12 @@ class testConsole(unittest.TestCase):
         self.assertTrue(hasattr(HBNBCommand, "do_update"))
         self.assertTrue(hasattr(HBNBCommand, "do_all"))
         self.assertTrue(hasattr(HBNBCommand, "do_count"))
+        self.assertTrue(hasattr(HBNBCommand, "prompt"))
+
+    def test_propmt(self):
+        """ test prompt command """
+        self.assertTrue(hasattr(HBNBCommand, "prompt"))
+        self.assertEqual(HBNBCommand().prompt, "(hbnb) ")
 
     def test_HBNBCommand_001(self):
         """tests the console 0.0.1"""
@@ -34,6 +40,8 @@ class testConsole(unittest.TestCase):
             HBNBCommand().onecmd("EOF")
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("quit")
+        with patch('sys.stdout', new=StringIO()) as f:
+            HBNBCommand().onecmd("")
 
     def test_HBNBCommand_01(self):
         """tests the console 0.1"""
@@ -48,7 +56,7 @@ class testConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("all BaseModel")
         with patch('sys.stdout', new=StringIO()) as f:
-            HBNBCommand().onecmd("update BaseModel 1234-1234-1234 name 'Holberton'")
+            HBNBCommand().onecmd("update BaseModel 1234-1234-1234 name 'Hol'")
 
     def test_HBNBCommand_10(self):
         """tests the console 1.0"""
