@@ -1,0 +1,197 @@
+.places {
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+
+article {
+    width: 390px;
+    margin: 20px;
+    padding: 20px;
+    border: solid #FF5A5F 1px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    gap: 40px;
+
+}
+article h2{
+    text-align: center;
+}
+
+
+.places h1 {
+    flex-basis: 100%;
+}
+.price_by_night {
+    color: #FF5A5F;
+    border: solid #FF5A5F 4px;
+    border-radius: 50%;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    margin-left: auto;
+    padding: 10px;
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.information {
+    height: 80px;
+    border-bottom: solid  #DDDDDD 1px;
+    border-top: solid  #DDDDDD 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 12px;
+}
+
+.max_guest{
+    background-image: url('../images/icon_group.png');
+    background-repeat: no-repeat;
+    width: 100px;
+    height: auto;
+    font-size: 12px;
+    background-position: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    
+}
+.number_rooms{
+    background-image: url('../images/icon_bed.png');
+   
+    background-repeat: no-repeat;
+    width: 100px;
+    height: auto;
+    font-size: 12px;
+    background-position: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+}
+
+.number_bathrooms{
+    background-image: url('../images/icon_bath.png');
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 80px;
+    font-size: 12px;
+    background-position: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.user{
+    font-size: 12px;
+    transform: translateY(-20px);
+}
+.user span{
+    font-weight: bold;
+}
+.description{
+    font-size: 12px;
+    margin: 0;
+    transform: translateY(-40px);
+}
+article .amenities h2 {
+    font-size: 16px;
+    border-bottom: solid #DDDDDD 1px;
+    text-align: start;
+}
+article .amenities li:nth-child(1){
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    background-image: url('../images/icon_tv.png');
+    background-repeat: no-repeat;
+    height: 20px;
+    width: auto;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-size: 20px auto;
+    flex: 1;
+}
+article .amenities li:nth-child(2){
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    background-image: url('../images/icon_wifi.png');
+    background-repeat: no-repeat;
+    height: 20px;
+    width: auto;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-size: 20px auto;
+    flex: 1;
+}
+article .amenities li:nth-child(3){
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    background-image: url('../images/icon_pets.png');
+    background-repeat: no-repeat;
+    height: 20px;
+    width: auto;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-size: 20px auto;
+    flex: 1;
+}
+article .amenities li span{
+    margin-left: 25px;
+}
+article .amenities ul {
+    margin: 40px 0 0 0 ;
+    padding: 0;
+}
+.reviews h2{
+    font-size: 16px;
+    border-bottom:solid #DDDDDD 1px;
+    text-align: start;
+}
+.reviews ul{
+    margin: 0;
+    padding: 0;
+}
+.reviews li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+.reviews li h3{
+   font-size: 14px;
+   margin: 10px 0 2px 0;
+}
+.reviews li p{
+    font-size: 12px;
+    margin: 0 0 10px 0;
+ }
+ 
